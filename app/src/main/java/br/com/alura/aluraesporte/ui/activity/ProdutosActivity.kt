@@ -21,6 +21,7 @@ class ProdutosActivity : AppCompatActivity() {
 /*            val produtosFragment: ListaProdutosFragment by inject()
             transacaoFragment {
                 replace(R.id.container, produtosFragment)
+                //commit1
             }*/
         }
     }
