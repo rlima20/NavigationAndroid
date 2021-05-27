@@ -22,6 +22,7 @@ class ProdutosActivity : AppCompatActivity() {
             transacaoFragment {
                 replace(R.id.container, produtosFragment)
                 //commit1
+                //commit2
             }*/
         }
     }
