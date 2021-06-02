@@ -83,19 +83,18 @@ class PagamentoFragment : Fragment() {
                             COMPRA_REALIZADA,
                             Toast.LENGTH_SHORT
                         ).show()
-                        controlador.popBackStack()
-                        controlador.popBackStack()
-                        /**
-                         * Este é um teste para fazer
-                         */
-                        //vaiParaListaProdutos()
+                        vaiParaListaProdutos()
                     }
                 })
         }
     }
 
     private fun vaiParaListaProdutos() {
-        controlador.navigate(R.id.listaProdutos)
+        /**
+         *No backStack já vai direto para a lista de produtos já retirando
+         * os layouts anteriores da pilha.
+         */
+        controlador.popBackStack(R.id.listaProdutos, false)
     }
 
     private fun criaPagamento(): Pagamento? {
