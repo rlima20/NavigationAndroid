@@ -83,7 +83,12 @@ class PagamentoFragment : Fragment() {
                             COMPRA_REALIZADA,
                             Toast.LENGTH_SHORT
                         ).show()
-                        vaiParaListaProdutos()
+                        controlador.popBackStack()
+                        controlador.popBackStack()
+                        /**
+                         * Este é um teste para fazer
+                         */
+                        //vaiParaListaProdutos()
                     }
                 })
         }
