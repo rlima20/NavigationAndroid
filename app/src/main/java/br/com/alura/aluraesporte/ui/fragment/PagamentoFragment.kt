@@ -93,8 +93,10 @@ class PagamentoFragment : Fragment() {
         /**
          *No backStack já vai direto para a lista de produtos já retirando
          * os layouts anteriores da pilha.
+         *
+         * Eu posso usar as ações também para ir para um determinado fragment
          */
-        controlador.popBackStack(R.id.listaProdutos, false)
+        controlador.popBackStack(R.id.action_pagamento_to_listaProdutos, false)
     }
 
     private fun criaPagamento(): Pagamento? {
