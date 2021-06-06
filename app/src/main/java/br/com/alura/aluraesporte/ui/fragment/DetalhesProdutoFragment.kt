@@ -7,22 +7,20 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.alura.aluraesporte.R
-import br.com.alura.aluraesporte.di.daoModule
 import br.com.alura.aluraesporte.extensions.formatParaMoedaBrasileira
-import br.com.alura.aluraesporte.model.Produto
 import br.com.alura.aluraesporte.ui.activity.CHAVE_PRODUTO_ID
 import br.com.alura.aluraesporte.ui.viewmodel.DetalhesProdutoViewModel
 import kotlinx.android.synthetic.main.detalhes_produto.*
-import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class DetalhesProdutoFragment : Fragment() {
 
+    private val argumento by navArgs<DetalhesProdutoFragmentArgs>()
     private val produtoId by lazy {
-        arguments?.getLong(CHAVE_PRODUTO_ID)
-            ?: throw IllegalArgumentException(ID_PRODUTO_INVALIDO)
+        argumento.produtoId
     }
     private val viewModel: DetalhesProdutoViewModel by viewModel { parametersOf(produtoId) }
     private val controlador by lazy{
@@ -56,9 +54,8 @@ class DetalhesProdutoFragment : Fragment() {
     }
 
     private fun vaiParaPagamento() {
-        val dados = Bundle()
-        dados.putLong(CHAVE_PRODUTO_ID, produtoId)
-        controlador.navigate(R.id.action_detalhesProduto_to_pagamento, dados)
+        val direcoes = DetalhesProdutoFragmentDirections.actionDetalhesProdutoToPagamento(produtoId)
+        controlador.navigate(direcoes)
     }
 
     private fun buscaProduto() {

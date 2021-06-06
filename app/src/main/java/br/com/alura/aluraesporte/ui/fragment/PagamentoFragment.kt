@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import br.com.alura.aluraesporte.R
 import br.com.alura.aluraesporte.extensions.formatParaMoedaBrasileira
 import br.com.alura.aluraesporte.model.Pagamento
@@ -22,9 +23,10 @@ private const val COMPRA_REALIZADA = "Compra realizada"
 
 class PagamentoFragment : Fragment() {
 
+    private val argumentos by navArgs<PagamentoFragmentArgs>()
+
     private val produtoId by lazy {
-        arguments?.getLong(CHAVE_PRODUTO_ID)
-            ?: throw IllegalArgumentException(ID_PRODUTO_INVALIDO)
+        argumentos.produtoId
     }
 
     private val viewModel: PagamentoViewModel by viewModel()
@@ -90,13 +92,8 @@ class PagamentoFragment : Fragment() {
     }
 
     private fun vaiParaListaProdutos() {
-        /**
-         *No backStack já vai direto para a lista de produtos já retirando
-         * os layouts anteriores da pilha.
-         *
-         * Eu posso usar as ações também para ir para um determinado fragment
-         */
-        controlador.popBackStack(R.id.action_pagamento_to_listaProdutos, false)
+        val direcao = PagamentoFragmentDirections.actionPagamentoToListaProdutos()
+        controlador.navigate(direcao)
     }
 
     private fun criaPagamento(): Pagamento? {
