@@ -17,7 +17,19 @@ import org.koin.core.parameter.parametersOf
 
 class DetalhesProdutoFragment : Fragment() {
 
+    /**
+     * Recebendo argumentos com o safeArgs
+     * Vamos ter que acessar os argumentos do safeArgs colocar dentro de uma variável chamada argumento
+     * juntamente com um property delegated que é a ideia do lazy mas é justamente feito para os argumentos
+     * de navegação. Então vamos ter um byNavArgs. Com esse NavArgs vamos indicar os argumentos que esperamos
+     * que é da DetalhesProdutoFragmentArgs. Dessa maneira vamos ter acesso aos argumentos que definimos no grafo
+     * de navegação para o detalhes de produto fragment.
+     */
     private val argumento by navArgs<DetalhesProdutoFragmentArgs>()
+
+    /**
+     * Já aqui eu digo que a partir do argumento eu tenho acesso ao produtoId.
+     */
     private val produtoId by lazy {
         argumento.produtoId
     }

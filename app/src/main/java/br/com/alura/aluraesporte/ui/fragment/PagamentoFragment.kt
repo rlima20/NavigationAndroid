@@ -90,6 +90,14 @@ class PagamentoFragment : Fragment() {
         }
     }
 
+    /**
+     * Todas as vezes que utilizar uma ação eu vou estar utilizando a função de navegação.
+     * Usar o navigate para colocar a ação.
+     * A ação vai ser a variável direcao
+     * A variável direcao
+     *             app:popUpTo="@id/nav_graph" - mostra pra onde vai na ação de pop - É o destino inicial
+     *             app:popUpToInclusive="true" - Remove o fragment anterior
+     */
     private fun vaiParaListaProdutos() {
         val direcao = PagamentoFragmentDirections.actionPagamentoToListaProdutos()
         controlador.navigate(direcao)
