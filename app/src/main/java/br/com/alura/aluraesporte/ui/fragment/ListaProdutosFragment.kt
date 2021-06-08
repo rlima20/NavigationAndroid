@@ -62,6 +62,16 @@ class ListaProdutosFragment : Fragment() {
         lista_produtos_recyclerview.adapter = adapter
     }
 
+    /**
+     * Existem classes que são geradas durante o processo de build assim que tivermos o safeArgs.
+     * Vamos acessar o que conhecemos como direções possíveis de um destino, que é a partir de uma
+     * classe gerada para cada destino dentro do Navigation.
+     * Nesse caso por exemplo na lista de produtos, vamos ter a ListaProdutosFragmentDirections.
+     * A partir desse directions vamos ter disponível todas as direções possíveis desse destino, que vai ser
+     * uma referênci na qual vai manter tanto o id da ação quanto também os seus argumentos.
+     * Então a direção vai ser igual à essa classe passando o argumento necessário.
+     * As direções do nosso ListaProdutos tem essa ação. actionListaProdutosToDetalhesProduto.
+     */
     private fun vaiParaDetalhesDoProduto(produtoId: Long) {
         val direcoes = ListaProdutosFragmentDirections
             .actionListaProdutosToDetalhesProduto(produtoId)
