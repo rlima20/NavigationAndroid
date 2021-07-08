@@ -1,9 +1,7 @@
 package br.com.alura.aluraesporte.ui.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +24,7 @@ class ListaProdutosFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         buscaProdutos()
     }
 
@@ -76,5 +75,17 @@ class ListaProdutosFragment : Fragment() {
         val direcoes = ListaProdutosFragmentDirections
             .actionListaProdutosToDetalhesProduto(produtoId)
         controlador.navigate(direcoes)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        if(item?.itemId == R.id.menu_lista_produtos_deslogar){
+            
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
