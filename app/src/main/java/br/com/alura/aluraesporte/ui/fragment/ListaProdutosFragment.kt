@@ -15,10 +15,9 @@ import kotlinx.android.synthetic.main.lista_produtos.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class ListaProdutosFragment : Fragment() {
+class ListaProdutosFragment : BaseFragment() {
 
     private val viewModel: ProdutosViewModel by viewModel()
-    private val loginViewModel: LoginViewModel by viewModel()
     private val adapter: ProdutosAdapter by inject()
     private val controlador by lazy{
         findNavController()
@@ -26,15 +25,8 @@ class ListaProdutosFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        verificaSeEstaLogado()
         setHasOptionsMenu(true)
         buscaProdutos()
-    }
-
-    private fun verificaSeEstaLogado() {
-        if (loginViewModel.naoEstaLogado()) {
-            vaiParaTelaLogin()
-        }
     }
 
     private fun buscaProdutos() {
@@ -84,24 +76,5 @@ class ListaProdutosFragment : Fragment() {
         val direcoes = ListaProdutosFragmentDirections
             .actionListaProdutosToDetalhesProduto(produtoId)
         controlador.navigate(direcoes)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater?.inflate(R.menu.menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if(item?.itemId == R.id.menu_lista_produtos_deslogar){
-            loginViewModel.desloga()
-            vaiParaTelaLogin()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun vaiParaTelaLogin() {
-        val direcao = ListaProdutosFragmentDirections
-            .actionGlobalLogin()
-        controlador.navigate(direcao)
     }
 }
