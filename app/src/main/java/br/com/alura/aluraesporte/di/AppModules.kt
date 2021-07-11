@@ -12,6 +12,7 @@ import br.com.alura.aluraesporte.model.Produto
 import br.com.alura.aluraesporte.repository.LoginRepository
 import br.com.alura.aluraesporte.repository.PagamentoRepository
 import br.com.alura.aluraesporte.repository.ProdutoRepository
+import br.com.alura.aluraesporte.ui.activity.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.fragment.DetalhesProdutoFragment
 import br.com.alura.aluraesporte.ui.fragment.ListaProdutosFragment
 import br.com.alura.aluraesporte.ui.fragment.PagamentoFragment
@@ -95,4 +96,5 @@ val viewModelModule = module {
     viewModel<DetalhesProdutoViewModel> { (id: Long) -> DetalhesProdutoViewModel(id, get()) }
     viewModel<PagamentoViewModel> { PagamentoViewModel(get(), get()) }
     viewModel<LoginViewModel> { LoginViewModel(get()) }
+    viewModel<EstadoAppViewModel> {EstadoAppViewModel()}
 }
