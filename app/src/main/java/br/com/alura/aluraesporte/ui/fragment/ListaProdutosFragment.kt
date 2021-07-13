@@ -3,14 +3,13 @@ package br.com.alura.aluraesporte.ui.fragment
 import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout.VERTICAL
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.alura.aluraesporte.R
+import br.com.alura.aluraesporte.ui.activity.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.activity.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
-import br.com.alura.aluraesporte.ui.viewmodel.LoginViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.ProdutosViewModel
 import kotlinx.android.synthetic.main.lista_produtos.*
 import org.koin.android.ext.android.inject
@@ -29,7 +28,6 @@ class ListaProdutosFragment : BaseFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
-        controlador.navigate(R.id.listaPagamentos)
         buscaProdutos()
     }
 
@@ -54,7 +52,9 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        estadoAppViewModel.temAppBar = true
+        estadoAppViewModel.temComponentes = ComponentesVisuais(
+            appBar = true,
+            bottomNavigation = true)
         configuraRecyclerView()
     }
 
