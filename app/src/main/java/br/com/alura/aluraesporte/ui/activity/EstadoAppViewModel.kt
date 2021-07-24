@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 class EstadoAppViewModel : ViewModel() {
 
     /**
+     * Finish
      * Uma vez que o LiveData não pode ser alterado de fora da classe, para conseguir mudar
      * internamente eu faço a modificação do seu get().
      * Dessa maneira ele vai receber um outro LiveData que pode ser mutável.
