@@ -24,23 +24,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
-        controlador
-            .addOnDestinationChangedListener {
-                    controller,
-                    destination,
-                    arguments ->
+        controlador.addOnDestinationChangedListener { controller,
+                                                      destination,
+                                                      arguments ->
             title = destination.label
             viewModel.appBar.observe(this, Observer {
-                it?.let{ temComponentes ->
-                    if(temComponentes.appBar){
+                it?.let { temComponentes ->
+                    if (temComponentes.appBar) {
                         supportActionBar?.show()
-                    }else{
+                    } else {
                         supportActionBar?.hide()
                     }
 
-                    if(temComponentes.bottomNavigation){
+                    if (temComponentes.bottomNavigation) {
                         main_activity_bottom_navigation.visibility = VISIBLE
-                    }else{
+                    } else {
                         main_activity_bottom_navigation.visibility = GONE
                     }
                 }
